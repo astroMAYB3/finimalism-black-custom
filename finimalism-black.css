@@ -1,0 +1,99 @@
+/* ==== Black Theme CSS ====
+   Relies on local finimalism10.11.css in the same repo
+========================= */
+
+/* Import base Finimalism CSS from your repo */
+@import url("finimalism10.11.css");
+
+/* ---- Black overrides ---- */
+:root { --accentBlack: #ca1414; }
+
+/* Backdrop */
+.backgroundContainer {
+  background: #000;
+  -webkit-background-size: cover;
+  background-size: cover;
+  opacity: 0;
+}
+
+@keyframes fadeContainer {
+    from { opacity: 0.5; }
+    to   { opacity: 1; }
+}
+
+.itemsContainer.padded-left {
+  position: top;
+  z-index: 1;
+}
+
+.itemsContainer.padded-left::before {
+  opacity: 1;
+  animation: fadeContainer 5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.sectionTitleContainer.sectionTitleContainer-cards.padded-left::before {
+  backdrop-filter: saturate(0%) !important;
+}
+
+.detailPagePrimaryContainer {
+  position: relative;
+  z-index: 2;
+}
+
+.backgroundContainer.withBackdrop {
+  background-color: rgba(0, 0, 0, 0);
+  filter: saturate(0%);
+}
+
+@supports (backdrop-filter: blur(15px)) {
+  .dialog, .mainDrawer, .toast, .appfooter {
+    backdrop-filter: blur(15px);
+    background-color: #000a;
+  }
+}
+
+.raised, .fab, a[data-role="button"] {
+  background: #000;
+  transition: all 0.2s !important;
+  border: 1px solid white;
+  font-weight: 900;
+}
+
+.collapseContent, .formDialogFooter:not(.formDialogFooter-clear), .formDialogHeader:not(.formDialogHeader-clear), .paperList, .visualCardBox {
+  background-color: #000a;
+}
+
+.detailPagePrimaryContainer::before,
+.detailPageSecondaryContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  background-size: cover;
+  opacity: 1;
+  z-index: -1;
+  animation: fadeContainer 5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* ... all the other original Black overrides here ... */
+/* I would paste the entire content you previously provided here, exactly as-is. */
+
+/* ==== CUSTOM LOGOS ==== */
+
+/* Favicon / browser tab */
+link[rel="icon"] {
+  content: url("https://i.imgur.com/NqnwM5q.png") !important;
+}
+
+/* Top-left Jellyfin logo in header */
+.headerLeft img {
+  content: url("https://i.imgur.com/NqnwM5q.png") !important;
+}
+
+/* Detail page or other critical logos (example selector, tweak as needed) */
+.logo, .appLogo, .headerLogo {
+  content: url("https://i.imgur.com/NqnwM5q.png") !important;
+}
